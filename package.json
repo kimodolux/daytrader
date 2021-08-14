@@ -1,0 +1,48 @@
+{
+  "name": "next-auth-typescript-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An example project for NextAuth.js using Typescript",
+  "repository": "https://github.com/nextauthjs/next-auth-typescript-example.git",
+  "bugs": {
+    "url": "https://github.com/nextauthjs/next-auth/issues"
+  },
+  "homepage": "http://next-auth-typescript-example.now.sh",
+  "main": "",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "types": "tsc --noEmit"
+  },
+  "author": "Lluis Agusti <lluis@hey.com>",
+  "contributors": [
+    "Balázs Orbán <info@balazsorban.com>",
+    "Iain Collins <me@iaincollins.com>"
+  ],
+  "license": "ISC",
+  "prettier": {
+    "semi": false
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@next-auth/prisma-adapter": "^0.5.3",
+    "@prisma/client": "^2.29.1",
+    "next": "^11.0.0",
+    "next-auth": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sqlite3": "^5.0.2",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "@types/styled-components": "^5.1.12",
+    "babel-plugin-styled-components": "^1.13.2",
+    "prisma": "^2.29.1",
+    "typescript": "^4.3.4"
+  }
+}

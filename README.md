@@ -1,0 +1,2 @@
+# daytrader
+Stock market simulator

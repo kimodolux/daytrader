@@ -3,10 +3,38 @@ import Providers from "next-auth/providers"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 export default NextAuth({
   providers: [
+    // Providers.Credentials({
+    //   name: 'Credentials',
+    //   credentials: {
+    //     username: { label: "Username", type: "text", placeholder: "jsmith" },
+    //     password: {  label: "Password", type: "password" }
+    //   },
+    //   async authorize(credentials, req) {
+    //     // You need to provide your own logic here that takes the credentials
+    //     // submitted and returns either a object representing a user or value
+    //     // that is false/null if the credentials are invalid.
+    //     // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+    //     // You can also use the `req` object to obtain additional parameters
+    //     // (i.e., the request IP address) 
+    //     const res = await fetch("/auth/endpoint", {
+    //       method: 'POST',
+    //       body: JSON.stringify(credentials),
+    //       headers: { "Content-Type": "application/json" }
+    //     })
+    //     const user = await res.json()
+        
+    //     // If no error and we have user data, return it
+    //     if (res.ok && user) {
+    //       return user
+    //     }
+    //     // Return null if user data could not be retrieved
+    //     return null
+    //   }
+    // }),
     Providers.Email({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
@@ -20,11 +48,11 @@ export default NextAuth({
     //     keyId: process.env.APPLE_KEY_ID,
     //   },
     // }),
-    // Providers.Auth0({
-    //   clientId: process.env.AUTH0_ID,
-    //   clientSecret: process.env.AUTH0_SECRET,
-    //   domain: process.env.AUTH0_DOMAIN,
-    // }),
+    Providers.Auth0({
+      clientId: process.env.AUTH0_ID,
+      clientSecret: process.env.AUTH0_SECRET,
+      domain: process.env.AUTH0_DOMAIN,
+    }),
     // Providers.Facebook({
     //   clientId: process.env.FACEBOOK_ID,
     //   clientSecret: process.env.FACEBOOK_SECRET,
@@ -88,15 +116,15 @@ export default NextAuth({
     // signOut: '/auth/signout', // Displays form with sign out button
     // error: '/auth/error', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page
-    // newUser: null // If set, new users will be directed here on first sign in
+    newUser: '/account' // If set, new users will be directed here on first sign in
   },
 
   // Callbacks are asynchronous functions you can use to control what happens
   // when an action is performed.
   // https://next-auth.js.org/configuration/callbacks
   callbacks: {
-    // async signIn(user, account, profile) { return true },
-    // async redirect(url, baseUrl) { return baseUrl },
+    async signIn(user, account, profile) { return true },
+    async redirect(url, baseUrl) { return baseUrl },
     // async session(session, user) { return session },
     // async jwt(token, user, account, profile, isNewUser) { return token }
   },

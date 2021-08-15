@@ -17,7 +17,7 @@ export default function Header() {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                     <Button
-                        href={`/api/auth/signin`}
+                        // href={`/api/auth/signin`}
                         color="primary"
                         variant="contained"
                         onClick={ (e) => {
@@ -28,18 +28,37 @@ export default function Header() {
                         Sign in
                       </Button>
                 </Grid>
+                {/* <Grid item>
+                    <Button
+                        // href={`/api/auth/signin`}
+                        color="primary"
+                        variant="contained"
+                        onClick={ (e) => {
+                          e.preventDefault()
+                          signIn()
+                        }}
+                      >
+                        Sign up
+                      </Button>
+                </Grid> */}
               </Grid>
           )}
           {session?.user && (
              <Grid container>
              <Grid container item xs={6}>
-              <Avatar style={{marginRight: "1em"}}/>
-              <p>Signed in as <strong>{session.user.email || session.user.name}</strong></p>             
+               <Link href="account" >
+                 <Button>
+               <Avatar />
+                   
+                 </Button>
+               </Link>
+              
+              <p style={{marginLeft: "1em"}}>Signed in as <strong>{session.user.email || session.user.name}</strong></p>             
               </Grid>
               <Grid container item justifyContent="flex-end" xs={6}>
                 <Grid item >
                 <Button
-                href={`/api/auth/signout`}
+                // href={`/api/auth/signout`}
                 variant="contained"
                 color="primary"
                 onClick={ (e) => {
